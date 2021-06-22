@@ -1,5 +1,6 @@
 # Chest Radiography Classifcation
-This repository contains the code to classify our internal chest radiograph dataset
+This repository contains the code for our paper 
+Artificial versus Human Intelligence – Superior Diagnostic Accuracy of Deep Learning versus Radiologists in the Assessment of Bedside Chest Radiographs
 
 ## Installation
 To clone this repository please run
