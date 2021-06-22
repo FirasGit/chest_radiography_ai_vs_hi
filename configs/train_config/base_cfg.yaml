@@ -1,0 +1,50 @@
+meta:
+  num_classes: 54 
+  batch_size: 120
+  epochs: 100
+  prefix_name: ???
+  output_dir: /home/firas/Desktop/work/chest_radiography/code/chest_radiography_classification/checkpoints
+  test: False
+  rank_consistent_encoding: False
+model:
+  name: resnet_18
+annotations:
+  path_to_train_annotation_csv: /home/firas/Desktop/work/chest_radiography/data/train.csv
+  path_to_valid_annotation_csv: /home/firas/Desktop/work/chest_radiography/data/valid.csv
+  path_to_test_annotation_csv:  /home/firas/Desktop/work/chest_radiography/data/test.csv
+evaluation:
+  path_to_evaluation_results_dir: /home/firas/Desktop/work/chest_radiography/evaluation_results/
+  unique_labels: ['Herzgröße', 'Stauung', 'Pleuraerguss_re', 'Pleuraerguss_li', 'Infiltrate_re',
+                     'Infiltrate_li', 'Belstörungen_re', 'Belstörungen_li', 'Pneumothorax_re', 'Pneumothorax_li'] 
+data:
+  path_to_data_dir: /data/chest_radiograph/resized_nifti_files
+optimizer:
+  optimizer: adam
+  learning_rate: 1e-5
+  loss_fnc: bcewithlogits
+scheduler:
+  lr_scheduler: plateau
+  # Stuff for plateau scheduler
+  scheduler_metric: Val_mean_auc
+  scheduler_factor: 0.8
+  patience: 20
+  # Stuff for step scheduler
+  step_size: 20
+  gamma: 0.5
+early_stopping:
+  patience: 40
+  monitor: ${scheduler.scheduler_metric} # Typically this is chosen to be the same as scheduler metric (change if needed)
+  mode: max
+  min_delta: 0.005
+checkpoint:
+  monitor: ${scheduler.scheduler_metric} # Typically this is chosen to be the same as scheduler metric (change if needed)
+  mode: ${early_stopping.mode}
+  filename: '{epoch:02d}_{Val_mean_auc:.3f}_{Val_epoch_loss:.3f}'
+augmentation:
+  horizontal_flipping: 
+    prob: 0.5
+  rotation:
+    degrees: 20
+situs_inversus:
+  train: False
+  prob: 0.5

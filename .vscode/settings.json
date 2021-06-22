@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/home/firas/anaconda3/envs/chest_radiography_classification/bin/python",
+    "python.linting.pylintArgs": ["--init-hook",
+        "import sys; sys.path.append('/home/firas/Desktop/work/chest_radiography/code/chest_radiography_classification')"
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    }
