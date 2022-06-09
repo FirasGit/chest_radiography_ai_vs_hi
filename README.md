@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/379228550.svg)](https://zenodo.org/badge/latestdoi/379228550)
+
 This repository contains the code for our paper: Artificial Intelligence for Clinical Interpretation of Bedside Chest Radiographs
 
 ## Installation
